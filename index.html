@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	<title>
+		Database Dashboard Layout Template
+	</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script>
+		function loadDetails(x){
+			$("#dbDetails").show();
+		}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Acuity Brands Database Dashboard <small><a href="http://dba">http://dba</a></small></h1>
+			</div>
+						
+			<div class="alert alert-danger"><strong>ALERT!</strong> We are currently experiencing connection issues with OLA. The issues should be resolved by 04 March 2014 1030. <br>Last Updated: 04 March 2014 09:48:32</div>
+			
+			<div class="table-responsive">
+			  <table class="table">
+				<thead>
+					<tr>
+						<th>Database Name</th>
+						<th>Response Time</th>
+						<th>CPU %</th>
+						<th>Disk Free %</th>
+						<th>Memory Free%</th>
+						<th>Total Sessions</th>
+						<th>Active Sessions</th>
+						<th>Locks</th>
+						<th>Deadlocks</th>
+						<th>Blockers</th>
+					</tr>
+				</thead>
+					<tr>
+						<td>
+							<strong><a href="#details" title="link to agileSQL details" onClick="loadDetails('agilesql');">AgileSQL</a></strong>
+						</td>
+						<td>3ms</td>
+						<td>12.2</td>
+						<td>31.4</td>
+						<td>17.5</td>
+						<td>478</td>
+						<td>12</td>
+						<td>132</td>
+						<td>6</td>
+						<td>0</td>
+					</tr>
+					<tr class="info"><td colspan="10">INFO: AgileSQL will be unavailable on 16 March 2014 from 0800 to 1030 while Service Pack 1 is applied.</td></tr>
+					<tr>
+						<td>
+							<strong><a href="#details" title="link to busintel00 details" onClick="loadDetails('busintel00');">Busintel00</a></strong>
+						</td>
+						<td>5ms</td>
+						<td>37.1</td>
+						<td>17.8</td>
+						<td class="warning">12.2</td>
+						<td>78</td>
+						<td>6</td>
+						<td>5</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="glyphicon glyphicon glyphicon glyphicon-exclamation-sign"></span>
+							<strong><a href="#details" title="link to ola details" onClick="loadDetails('ola');">OLA</a></strong>
+						</td>
+						<td class="danger">117ms</td>
+						<td>5.2</td>
+						<td>37.4</td>
+						<td>87.1</td>
+						<td>34</td>
+						<td>12</td>
+						<td>2</td>
+						<td>0</td>
+						<td>0</td>
+					</tr>
+					<tr>
+						<td>
+							<strong><a href="#details" title="link to orcy details" onClick="loadDetails('orcy');">ORCY</a></strong>
+						</td>
+						<td>3ms</td>
+						<td>13.7</td>
+						<td>24.2</td>
+						<td>16.3</td>
+						<td>317</td>
+						<td>64</td>
+						<td>158</td>
+						<td>0</td>
+						<td class="warning">2</td>
+					</tr>
+				</thead>
+			  </table>
+			</div>
+			<div id="dbDetails">
+			<div class="panel panel-default">
+			  <div class="panel-heading"><a name="details"></a>
+				<h3 class="panel-title">ORCY Details</h3> <a href="http://confioweb:8123/iwc/database.iwc?dbGroup_id=1&repo_id=1">link to confio</a>
+				<button type="button" class="close" aria-hidden="true" onClick="$('#dbDetails').toggle();">&times;</button>
+			  </div>
+			  <div class="panel-body">
+				<ul class="nav nav-tabs">
+					<li><a href="#">Top Users</a></li>
+					<li><a href="#">Top Machines</a></li>
+					<li class="active"><a href="#">Top SQL</a></li>
+					<li><a href="#">Blocking Sessions/Objects</a></li>
+				</ul>
+						<div class="table-responsive">
+						  <table class="table">
+							<thead>
+								<tr>
+									<th>Session</th>
+									<th>User</th>
+									<th>Host</th>
+									<th>SQL Text</th>
+									<th>Wait Time</th>
+									<th>Locks</th>
+									<th>Blocking Sessions</th>
+								</tr>
+							</thead>
+								<tr>
+									<td>13,1542</td>
+									<td>APPS</td>
+									<td>DMZ-WEB01A</td>
+									<td>SELECT rtrim(substr(log_message, instr(log_message, '=', 1,2)-6,5)) a  FROM abl_logging_detail  WHERE id_abl_logging_ctrl=72  AND rownum <=1  ORDER BY entry_date desc</td>
+									<td class="warning">154ms</td>
+									<td>4</td>
+									<td class="danger">1732</td>
+								</tr>
+								<tr>
+									<td>17,2365</td>
+									<td>APPS</td>
+									<td>DMZ-WEB01C</td>
+									<td>SELECT rtrim(substr(log_message, instr(log_message, '=', 1,2)-6,5)) a  FROM abl_logging_detail  WHERE id_abl_logging_ctrl=72  AND rownum <=1  ORDER BY entry_date desc</td>
+									<td class="warning">154ms</td>
+									<td>4</td>
+									<td class="danger">1478</td>
+								</tr>
+						  </table>
+						</div>
+			  </div>
+			  </div>
+			</div>
+		</div>
+		<script>
+			$("#dbDetails").toggle();
+		</script>
+	</body>	
+</html>
