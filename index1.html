@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+	<title>
+		Database Dashboard Layout Template
+	</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+		<link rel="stylesheet" href="css/bootstrap.css"/>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+		<script type='text/javascript'>
+      google.load('visualization', '1', {packages:['gauge']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Memory', 40],
+          ['CPU', 55],
+          ['Network', 68],
+          ['Locks', 97]
+        ]);
+
+        var options = {
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('agileSQL_chart_div'));
+        chart.draw(data, options);
+        var chart = new google.visualization.Gauge(document.getElementById('busintel00_chart_div'));
+        chart.draw(data, options);
+        var chart = new google.visualization.Gauge(document.getElementById('OLA_chart_div'));
+        chart.draw(data, options);
+        var chart = new google.visualization.Gauge(document.getElementById('ORCY_chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+				<h1>Acuity Brands Database Dashboard <small><a href="http://dba">http://dba</a></small></h1>
+			</div>
+						
+			<div class="alert alert-danger"><strong>ALERT!</strong> I don't particularly like this design. Too many gauges. <br>Last Updated: 04 March 2014 09:48:32</div>
+
+			<div class="row">
+				<!-- AgileSQL -->
+
+				<div class="col-md-3">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+						<h3 class="panel-title"><h2>AgileSQL</h2></h3>
+					  </div>
+					  <div class="panel-body">
+						<div id="agileSQL_chart_div"></div>
+					  </div>
+					</div>
+				</div>
+
+				<!-- Busintel00 -->
+				<div class="col-md-3">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+						<h3 class="panel-title"><h2>Busintel00</h2></h3>
+					  </div>
+					  <div class="panel-body">
+						<div id="busintel00_chart_div"></div>
+					  </div>
+					</div>
+				</div>
+				
+				<!-- OLA -->
+				<div class="col-md-3">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+						<h3 class="panel-title"><h2>OLA</h2></h3>
+					  </div>
+					  <div class="panel-body">
+						<div id="OLA_chart_div"></div>
+					  </div>
+					</div>
+				</div>
+				
+				<!-- ORCY -->
+				<div class="col-md-3">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+						<h3 class="panel-title"><h2>ORCY</h2></h3>
+					  </div>
+					  <div class="panel-body">
+						<div id="ORCY_chart_div"></div>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>	
+</html>
